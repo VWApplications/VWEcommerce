@@ -1,0 +1,57 @@
+{% load i18n %}
+<div class="container">
+  <div class="row">
+    <div class="col l4 s12">
+      <h2 class="white-text">{% trans 'Contact' %}</h2>
+      <p class="grey-text text-lighten-4"><b>{% trans 'Address' %}</b>: Brasilia, DF</p>
+      <p class="grey-text text-lighten-4"><b>{% trans 'Email' %}</b>: spoon@gmail.com</p>
+      <p class="grey-text text-lighten-4"><b>{% trans 'Phone' %}</b>: (61) 9928-4495</p>
+    </div><br />
+    <div class="col l8 s12">
+      <form>
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <h4 class="grey-text text-lighten-4">{% trans 'Contact me' %}</h4>
+              <div class="input-field col s6">
+                <span class="material-icons md-light prefix">perm_identity</span>
+                <input id="name" type="text" class="validate">
+                <label for="name">{% trans 'First Name' %}</label>
+              </div>
+              <div class="input-field col s6">
+                <span class="material-icons md-light prefix">email</span>
+                <input id="email" type="tel" class="validate">
+                <label for="email">{% trans 'Email' %}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <span class="material-icons md-light prefix">message</span>
+                <textarea id="message" class="materialize-textarea" length="300"></textarea>
+                <label for="message">{% trans 'Message' %}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="waves-effect waves-light btn right"><i class="material-icons left">send</i>Enviar</a>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="footer-copyright">
+  <div class="container">
+    <span class="copyright">{% trans 'Made by' %} <a href="http://github.com/VictorArnaud" target="_blank">Victor Arnaud</a></span>
+  </div>
+</div>
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large waves-effect waves-teal">
+    <i class="large material-icons">link</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating tooltipped" data-tooltip="Youtube"><i class="material-icons">link</i></a></li>
+  </ul>
+</div>

@@ -1,0 +1,52 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Spoon{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-wrapper black-gradient">
+          <a href="{% url 'core:home' %}" class="brand-logo"><i class="material-icons">home</i>{% trans 'Spoon' %}</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li class="{% block active-home %}{% endblock %}"><a href="{% url 'core:home' %}"><i class="material-icons left">store</i>{% trans 'Home' %}</a></li>
+            <li class="{% block active-products %}{% endblock %}"><a href="#"><i class="material-icons left">shopping_basket</i>{% trans 'Products' %}</a></li>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown">
+              <i class="material-icons left">view_list</i>{% trans 'Category' %}<i class="material-icons right">arrow_drop_down</i>
+            </a></li>
+            <li class="{% block active-contact %}{% endblock %}"><a href="#contact"><i class="material-icons left">contact_phone</i>{% trans 'Contact' %}</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="{% url 'core:home' %}"><i class="material-icons left">store</i>{% trans 'Home' %}</a></li>
+            <li><a href="#"><i class="material-icons left">shopping_basket</i>{% trans 'Products' %}</a></li>
+            <li><a href="#contact"><i class="material-icons left">contact_phone</i>{% trans 'Contact' %}</a></li>
+            <li class="divider">Categorias</li>
+            <li><a href="#contact"><i class="material-icons left">contact_phone</i>{% trans 'Contact' %}</a></li>
+          </ul>
+        </div>
+        <ul id="dropdown" class="dropdown-content">
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
+          <li><a href="#!">three</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      {% block main %}{% endblock %}
+    </main>
+    <footer id="contact" class="page-footer black-gradient">
+      {% include 'core/footer.html' %}
+    </footer>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="{% static 'core/js/base.js' %}"></script>
+  </body>
+</html>

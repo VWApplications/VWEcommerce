@@ -1,0 +1,40 @@
+engines:
+  csslint:
+    enabled: true
+    checks:
+      important:
+        enabled: false
+  duplication:
+    enabled: true
+    config:
+      languages:
+        count_threshold: 3
+        python:
+          python_version: 3
+          mass_threshold: 60
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+  radon:
+    enabled: true
+  pep8:
+    enabled: true
+    checks:
+      E501:
+        enabled: false
+      E111:
+        enabled: false
+      E114:
+        enabled: false
+ratings:
+  paths:
+    - "**.js"
+    - "**.py"
+    - "**.css"
+    - "**.html"
+exclude_paths:
+  - "manage.py"
+  - "**/migrations/**.py"
+  - "**/__init__.py"
+
