@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 import dj_database_url
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# Armazena o diretorio raiz do projeto
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -31,8 +31,7 @@ DEBUG = False
 ALLOWED_HOSTS = []
 
 
-# Application definition
-
+# Instalar aplicações
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'catalog',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +55,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'vwecommerce.urls'
 
+# Sistema de templates
+# BACKEND: É o sistema principal de templates do django
+# DIRS: Lista de diretorios onde irei encontrar meus templates
+# APP_DIRS: Indica que cada aplicação terá seus templates
+# Context_processors: São funções que são chamadas toda vez que um template for renderizado
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -66,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'catalog.context_processors.categories',
             ],
         },
     },
@@ -74,9 +80,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'vwecommerce.wsgi.application'
 
 
-# Database
+# Banco de Dados
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
+# ENGINE: é o banco de dados que irá utilizar
+# NAME: é onde será armazenado o banco de dados
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -85,9 +92,8 @@ DATABASES = {
 }
 
 
-# Password validation
+# Validação de senhas
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -104,9 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
+# Sistema de internacionalização
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
-
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
@@ -120,7 +125,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
 STATIC_URL = '/static/'
 
 # Database

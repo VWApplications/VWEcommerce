@@ -1,0 +1,24 @@
+{% for product in products %}
+  <div class="col s12 m4 l3">
+    <div class="card sticky-action">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="http://images.freeimages.com/images/previews/2ac/lamborghini-murcielago-1-1474221.jpg">
+        <span class="card-title activator white-text text-darken-4 center-align">{{product}}</span>
+      </div>
+      <div class="card-action">
+        <div class="row">
+          <p><a class="right" href="{% url 'catalog:product' product.slug %}">visualizar</a></p>
+          <p><a class="left" href="#">comprar</a></p>
+        </div>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{{product}}</span>
+        <p>{{product.description|truncatewords:8}}</p>
+        <p><b>Categoria:</b> {{product.category}}</p>
+        <p><b>Preço:</b> {{product.price}}</p>
+      </div>
+    </div>
+  </div>
+{% empty %}
+  <p class="flow-text">não há nenhum produto na lista</p>
+{% endfor %}

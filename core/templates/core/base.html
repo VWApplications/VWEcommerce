@@ -18,7 +18,7 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li class="{% block active-home %}{% endblock %}"><a href="{% url 'core:home' %}"><i class="material-icons left">store</i>{% trans 'Home' %}</a></li>
-            <li class="{% block active-products %}{% endblock %}"><a href="#"><i class="material-icons left">shopping_basket</i>{% trans 'Products' %}</a></li>
+            <li class="{% block active-products %}{% endblock %}"><a href="{% url 'catalog:product_list' %}"><i class="material-icons left">shopping_basket</i>{% trans 'Products' %}</a></li>
             <li><a class="dropdown-button" href="#!" data-activates="dropdown">
               <i class="material-icons left">view_list</i>{% trans 'Category' %}<i class="material-icons right">arrow_drop_down</i>
             </a></li>
@@ -27,15 +27,16 @@
           <ul class="side-nav" id="mobile-demo">
             <li><a href="{% url 'core:home' %}"><i class="material-icons left">store</i>{% trans 'Home' %}</a></li>
             <li><a href="#"><i class="material-icons left">shopping_basket</i>{% trans 'Products' %}</a></li>
+            <li><a href="{% url 'catalog:product_list' %}"><i class="material-icons left">shopping_basket</i>{% trans 'Products' %}</a></li>
             <li><a href="#contact"><i class="material-icons left">contact_phone</i>{% trans 'Contact' %}</a></li>
             <li class="divider">Categorias</li>
             <li><a href="#contact"><i class="material-icons left">contact_phone</i>{% trans 'Contact' %}</a></li>
           </ul>
         </div>
         <ul id="dropdown" class="dropdown-content">
-          <li><a href="#!">one</a></li>
-          <li><a href="#!">two</a></li>
-          <li><a href="#!">three</a></li>
+          {% for category in categories %}
+            <li><a href="{% url 'catalog:category' category.slug %}">{{category}}</a></li>
+          {% endfor %}
         </ul>
       </nav>
     </header>
