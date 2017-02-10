@@ -26,7 +26,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = ')bsp7kkd3bin5+q+yfs$i%2a43mbf53a7zwjn64mvrxw8a432@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -136,3 +136,9 @@ ALLOWED_HOSTS = ['*']
 
 # Servir arquivos estaticos
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+# Sobrescrever as configurações do settings.py com as do local_settings.py
+try:
+  from .local_settings import *
+except ImportError:
+  pass
