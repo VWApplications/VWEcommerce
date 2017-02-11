@@ -63,3 +63,21 @@ class CategoryTestCase(TestCase):
     self.assertEquals(products.count(), 7)
     for product in products:
       self.assertEquals(product.category, response.context['category'])
+
+
+class ProductViewTestCase(TestCase):
+
+  def setUp(self):
+    self.client = Client()
+    self.product = mommy.make(Product, name='Curso de Python')
+
+  def test_status_ok(self):
+    response = self.client.get(self.product.get_absolute_url())
+    self.assertEquals(response.status_code, 200)
+    self.assertTemplateUsed(response, 'catalog/product.html')
+
+  def test_context(self):
+    response = self.client.get(self.product.get_absolute_url())
+    self.assertTrue('product' in response.context)
+    product = response.context['product']
+    self.assertEquals(product.name, response.context['product'].name)
