@@ -7,7 +7,7 @@
       </div>
       <div class="card-action">
         <div class="row">
-          <p><a class="right" href="{% url 'catalog:product' product.slug %}">visualizar</a></p>
+          <p><a class="right" href="{{product.get_absolute_url}}">visualizar</a></p>
           <p><a class="left" href="#">comprar</a></p>
         </div>
       </div>
