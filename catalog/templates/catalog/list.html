@@ -7,8 +7,12 @@
       </div>
       <div class="card-action">
         <div class="row">
-          <p><a class="right" href="{{product.get_absolute_url}}">visualizar</a></p>
-          <p><a class="left" href="#">comprar</a></p>
+          <p><a class="blue-text text-darken-2 right list-link tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver produto" href="{{product.get_absolute_url}}">
+            <i class="material-icons left md-48">visibility</i>
+          </a></p>
+          <p><a class="blue-text text-darken-2 left list-link tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar ao carrinho" href="#">
+            <i class="material-icons left md-48">add_shopping_cart</i>
+          </a></p>
         </div>
       </div>
       <div class="card-reveal">

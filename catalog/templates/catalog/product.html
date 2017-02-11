@@ -1,5 +1,9 @@
 {% extends 'core/base.html' %}
+{% load static %}
 {% block title %}Produto{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'catalog/catalog.css' %}" />
+{% endblock %}
 {% block main %}
 <div class="container">
   <div class="row">
@@ -9,9 +13,10 @@
       <div class="row">
         <div class="col s12 m4">
           <img class="materialboxed" width="100%" src="http://images.freeimages.com/images/previews/2ac/lamborghini-murcielago-1-1474221.jpg"><br />
-          <a class="btn" href="#">Comprar</a>
+          <a class="btn" href="#"><i class="material-icons left">add_shopping_cart</i>Comprar</a>
         </div>
         <div class="col s12 m8">
+          <h5>{{product}}</h5>
           <p>{{product.description|linebreaksbr}}</p>
           <p><b>Categoria:</b> {{product.category}}</p>
           <p><b>Preço:</b> {{product.price}}</p>

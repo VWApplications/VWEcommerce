@@ -1,5 +1,9 @@
 {% extends 'core/base.html' %}
+{% load static %}
 {% block title %}lista de produtos{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'catalog/catalog.css' %}" />
+{% endblock %}
 {% block active-products %}active{% endblock %}
 {% block main %}
   <div class="row">
