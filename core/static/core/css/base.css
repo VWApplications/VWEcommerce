@@ -11,12 +11,9 @@
   background: linear-gradient(to right, black, #555);
 }
 
-.material-icons.md-light { color: rgba(255, 255, 255, 1); }
-.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
+.md-30 {font-size: 30px;}
+.md-24 {font-size: 24px;}
+
 nav .brand-logo { padding-left: 10px; }
 footer .input-field {color:white;}
 footer.page-footer { margin-top: 0; }
@@ -25,4 +22,3 @@ p { text-align: justify;}
 .links { margin-right: 10px; }
 .btn-floating { top: 18px; }
 .icon-block { padding: 0 15px; }
-.icon-block .material-icons { font-size: inherit; }

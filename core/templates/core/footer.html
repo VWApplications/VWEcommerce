@@ -1,5 +1,5 @@
 {% load i18n %}
-<div class="container">
+<div class="container" id="contact">
   <div class="row">
     <div class="col l4 s12">
       <h2 class="white-text">{% trans 'Contact' %}</h2>
@@ -8,20 +8,27 @@
       <p class="grey-text text-lighten-4"><b>{% trans 'Phone' %}</b>: (61) 9928-4495</p>
     </div><br />
     <div class="col l8 s12">
-      <form>
+      <form method="post" action="#contact">
+        {% csrf_token %}
         <div class="row">
           <div class="col s12">
             <div class="row">
               <h4 class="grey-text text-lighten-4">{% trans 'Contact me' %}</h4>
               <div class="input-field col s6">
-                <span class="material-icons md-light prefix">perm_identity</span>
-                <input id="name" type="text" class="validate">
+                <span class="fa fa-user-circle-o md-light prefix"></span>
+                <input id="name" type="text" class="validate" name="name">
                 <label for="name">{% trans 'First Name' %}</label>
+                {% for error in form.name.errors %}
+                  <span class="red-text text-accent-2">{{error}}</span>
+                {% endfor %}
               </div>
               <div class="input-field col s6">
-                <span class="material-icons md-light prefix">email</span>
-                <input id="email" type="tel" class="validate">
+                <span class="fa fa-envelope-o md-light prefix"></span>
+                <input id="email" type="email" class="validate" name="email">
                 <label for="email">{% trans 'Email' %}</label>
+                {% for error in form.email.errors %}
+                  <span class="red-text text-accent-2">{{error}}</span>
+                {% endfor %}
               </div>
             </div>
           </div>
@@ -30,14 +37,17 @@
           <div class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <span class="material-icons md-light prefix">message</span>
-                <textarea id="message" class="materialize-textarea" length="300"></textarea>
+                <span class="fa fa-commenting md-light prefix"></span>
+                <textarea id="message" class="materialize-textarea" length="300" name="message"></textarea>
                 <label for="message">{% trans 'Message' %}</label>
+                {% for error in form.message.errors %}
+                  <span class="red-text text-accent-2">{{error}}</span>
+                {% endfor %}
               </div>
             </div>
           </div>
         </div>
-        <a class="waves-effect waves-light btn right"><i class="material-icons left">send</i>Enviar</a>
+        <button type="submit" class="waves-effect waves-light btn right"><i class="fa fa-send-o left"></i>Enviar</button>
       </form>
     </div>
   </div>
@@ -49,9 +59,11 @@
 </div>
 <div class="fixed-action-btn">
   <a class="btn-floating btn-large waves-effect waves-teal">
-    <i class="large material-icons">link</i>
+    <i class="large fa fa-link"></i>
   </a>
   <ul>
-    <li><a class="btn-floating tooltipped" data-tooltip="Youtube"><i class="material-icons">link</i></a></li>
+    <li><a class="btn-floating tooltipped" data-tooltip="Youtube"><i class="fa fa-youtube"></i></a></li>
+    <li><a class="btn-floating tooltipped" data-tooltip="Facebook"><i class="fa fa-facebook-square"></i></a></li>
+    <li><a class="btn-floating tooltipped" data-tooltip="Instagran"><i class="fa fa-instagram"></i></a></li>
   </ul>
 </div>

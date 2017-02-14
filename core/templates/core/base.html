@@ -7,7 +7,7 @@
     <title>{% block title %}Spoon{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link rel="stylesheet" href="{% static 'core/css/icon.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
     {% block css %}{% endblock %}
   </head>
@@ -15,22 +15,18 @@
     <header>
       <nav>
         <div class="nav-wrapper black-gradient">
-          <a href="{% url 'core:home' %}" class="brand-logo"><i class="material-icons">home</i>{% trans 'Spoon' %}</a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <a href="{% url 'core:home' %}" class="brand-logo"><i class="fa fa-home"></i>{% trans 'Spoon' %}</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fa fa-bars md-24"></i></a>
           <ul class="right hide-on-med-and-down">
-            <li class="{% block active-home %}{% endblock %}"><a href="{% url 'core:home' %}"><i class="material-icons left">store</i>{% trans 'Home' %}</a></li>
-            <li class="{% block active-products %}{% endblock %}"><a href="{% url 'catalog:product_list' %}"><i class="material-icons left">shopping_basket</i>{% trans 'Products' %}</a></li>
+            <li class="{% block active-products %}{% endblock %}"><a href="{% url 'catalog:product_list' %}"><i class="fa fa-shopping-cart left"></i>{% trans 'Products' %}</a></li>
             <li class="{% block active-category %}{% endblock %}"><a class="dropdown-button" href="#!" data-activates="dropdown">
-              <i class="material-icons left">view_list</i>{% trans 'Category' %}<i class="material-icons right">arrow_drop_down</i>
+              <i class="fa fa-list-alt left"></i>{% trans 'Category' %}<i class="fa fa-angle-down right"></i>
             </a></li>
-            <li><a href="#contact"><i class="material-icons left">contact_phone</i>{% trans 'Contact' %}</a></li>
+            <li><a href="#contact"><i class="fa fa-phone left"></i>{% trans 'Contact' %}</a></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><a href="{% url 'core:home' %}"><i class="material-icons left">store</i>{% trans 'Home' %}</a></li>
-            <li><a href="{% url 'catalog:product_list' %}"><i class="material-icons left">shopping_basket</i>{% trans 'Products' %}</a></li>
-            <li><a href="#contact"><i class="material-icons left">contact_phone</i>{% trans 'Contact' %}</a></li>
-            <li class="divider">Categorias</li>
-            <li><a href="#contact"><i class="material-icons left">contact_phone</i>{% trans 'Contact' %}</a></li>
+            <li><a href="{% url 'catalog:product_list' %}"><i class="fa fa-list-alt left"></i>{% trans 'Products' %}</a></li>
+            <li><a href="#contact"><i class="fa fa-phone left"></i>{% trans 'Contact' %}</a></li>
           </ul>
         </div>
         <ul id="dropdown" class="dropdown-content">

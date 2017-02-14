@@ -8,6 +8,9 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
+
+Quick-start development settings - unsuitable for production
+https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 """
 
 import os
@@ -17,17 +20,14 @@ import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+# Criar variável de ambiente para armazenar o secret_key
+# Usado para fazer a criptografia da sua senha
+SECRET_KEY = os.getenv('SECRET_KEY', 'SECRET_KEY_DEFAULT')
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')bsp7kkd3bin5+q+yfs$i%2a43mbf53a7zwjn64mvrxw8a432@'
-
-# SECURITY WARNING: don't run with debug turned on in production!
+# Modo de debug para ambiente de desenvolvimento, deve ser False quando colocado em produção
 DEBUG = False
 
+# Dominios permitidos para a aplicação
 ALLOWED_HOSTS = []
 
 
@@ -142,6 +142,13 @@ ALLOWED_HOSTS = ['*']
 
 # Servir arquivos estaticos
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+# E-mail
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = 'admin@gmail.com'
+
 
 # Sobrescrever as configurações do settings.py com as do local_settings.py
 try:

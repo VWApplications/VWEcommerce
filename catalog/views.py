@@ -1,23 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product, Category
+from django.views.generic import ListView
 
 
-def product_list(request):
-  template = 'catalog/product_list.html'
-  context = {
-    'products': Product.objects.all()
-  }
-  return render(request, template, context)
+class ProductListView(ListView):
+  model = Product
+  template_name = 'catalog/product_list.html'
+  context_object_name = 'products'
+  paginate_by = 2
 
 
-def category(request, category_slug):
-  template = 'catalog/category.html'
-  category = Category.objects.get(slug=category_slug)
-  context = {
-    'category': category,
-    'products': Product.objects.filter(category=category),
-  }
-  return render(request, template, context)
+class CategoryListView(ListView):
+  template_name = 'catalog/category.html'
+  context_object_name = 'products'
+  paginate_by = 2
+
+  def get_queryset(self):
+    products = Product.objects.filter(category__slug=self.kwargs['category_slug'])
+    return products
+
+  def get_context_data(self, **kwargs):
+    context = super(CategoryListView, self).get_context_data(**kwargs)
+    context['category'] = get_object_or_404(Category, slug=self.kwargs['category_slug'])
+    return context
 
 
 def product(request, product_slug):

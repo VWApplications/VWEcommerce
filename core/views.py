@@ -1,6 +1,13 @@
 from django.shortcuts import render
+from .forms import ContactForm
 
 
 def home(request):
   template = 'core/home.html'
-  return render(request, template)
+  form = ContactForm(request.POST or None)
+  if form.is_valid():
+    form.send_email()
+  context = {
+    'form': form,
+  }
+  return render(request, template, context)

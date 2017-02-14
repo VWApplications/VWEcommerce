@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
 from django.core.urlresolvers import reverse
+from django.core.paginator import Paginator
 from catalog.models import Product, Category
 from model_mommy import mommy
 
@@ -23,8 +24,21 @@ class ProductListTestCase(TestCase):
   def test_context(self):
     response = self.client.get(self.url)
     self.assertTrue('products' in response.context)
-    product_list = response.context['products']
-    self.assertEquals(product_list.count(), 10)
+    self.assertTrue('paginator' in response.context)
+    self.assertTrue('page_obj' in response.context)
+
+  def test_pagination(self):
+    response = self.client.get(self.url)
+    paginator = response.context['paginator']
+    products = response.context['products']
+    self.assertEquals(paginator.count, 10)
+    self.assertEquals(paginator.per_page, 2)
+    self.assertEquals(paginator.num_pages, 5)
+    self.assertEquals(products.count(), 2)
+
+  def test_page_not_found(self):
+    response = self.client.get('{0}?page=6'.format(self.url))
+    self.assertEquals(response.status_code, 404)
 
 
 class CategoryTestCase(TestCase):
@@ -50,8 +64,17 @@ class CategoryTestCase(TestCase):
     response = self.client.get(self.design.get_absolute_url())
     self.assertTrue('category' in response.context)
     self.assertTrue('products' in response.context)
+    self.assertTrue('paginator' in response.context)
+    self.assertTrue('page_obj' in response.context)
+
+  def test_design_category_pagination(self):
+    response = self.client.get(self.design.get_absolute_url())
+    paginator = response.context['paginator']
     products = response.context['products']
-    self.assertEquals(products.count(), 6)
+    self.assertEquals(paginator.count, 6)
+    self.assertEquals(paginator.per_page, 2)
+    self.assertEquals(paginator.num_pages, 3)
+    self.assertEquals(products.count(), 2)
     for product in products:
       self.assertEquals(product.category, response.context['category'])
 
@@ -59,8 +82,17 @@ class CategoryTestCase(TestCase):
     response = self.client.get(self.devops.get_absolute_url())
     self.assertTrue('category' in response.context)
     self.assertTrue('products' in response.context)
+    self.assertTrue('paginator' in response.context)
+    self.assertTrue('page_obj' in response.context)
+
+  def test_devops_category_pagination(self):
+    response = self.client.get(self.devops.get_absolute_url())
+    paginator = response.context['paginator']
     products = response.context['products']
-    self.assertEquals(products.count(), 7)
+    self.assertEquals(paginator.count, 7)
+    self.assertEquals(paginator.per_page, 2)
+    self.assertEquals(paginator.num_pages, 4)
+    self.assertEquals(products.count(), 2)
     for product in products:
       self.assertEquals(product.category, response.context['category'])
 
