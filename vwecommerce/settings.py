@@ -129,10 +129,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
-# Lugares extras para o django achar arquivos estaticos.
-STATICFILES_DIRS = (
-  os.path.join(PROJECT_ROOT, 'static'),
-)
 
 # Database
 db_from_env = dj_database_url.config(conn_max_age=500)
