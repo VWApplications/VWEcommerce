@@ -142,7 +142,6 @@ ALLOWED_HOSTS = ['*']
 
 # Servir arquivos estaticos
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
