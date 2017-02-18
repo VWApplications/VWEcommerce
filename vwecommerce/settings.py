@@ -30,7 +30,6 @@ DEBUG = False
 # Dominios permitidos para a aplicação
 ALLOWED_HOSTS = []
 
-
 # Instalar aplicações
 INSTALLED_APPS = [
     'django.contrib.admin',
