@@ -90,5 +90,4 @@ ENV/
 
 # Production
 vwecommerce/local_settings.py
-staticfiles
 media
