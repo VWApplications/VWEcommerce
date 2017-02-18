@@ -4,7 +4,7 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}Spoon{% endblock %}</title>
+    <title>{% block title %}VWE-Commerce{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,7 +15,7 @@
     <header>
       <nav>
         <div class="nav-wrapper black-gradient">
-          <a href="{% url 'core:home' %}" class="brand-logo"><i class="fa fa-home"></i>{% trans 'Spoon' %}</a>
+          <a href="{% url 'core:home' %}" class="brand-logo"><i class="fa fa-home"></i>{% trans 'VWE-Commerce' %}</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fa fa-bars md-24"></i></a>
           <ul class="right hide-on-med-and-down">
             <li class="{% block active-products %}{% endblock %}"><a href="{% url 'catalog:product_list' %}"><i class="fa fa-shopping-cart left"></i>{% trans 'Products' %}</a></li>
@@ -23,10 +23,22 @@
               <i class="fa fa-list-alt left"></i>{% trans 'Category' %}<i class="fa fa-angle-down right"></i>
             </a></li>
             <li><a href="#contact"><i class="fa fa-phone left"></i>{% trans 'Contact' %}</a></li>
+            {% if user.is_authenticated %}
+               <li><a href="{% url 'accounts:profile' %}"><i class="fa fa-address-card left"></i>{% trans 'Profile' %}</a></li>
+               <li><a href="{% url 'accounts:logout' %}"><i class="fa fa-sign-in left"></i>{% trans 'Logout' %}</a></li>
+            {% else %}
+               <li><a href="{% url 'accounts:login' %}"><i class="fa fa-sign-in left"></i>{% trans 'Login' %}</a></li>
+            {% endif %}
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="{% url 'catalog:product_list' %}"><i class="fa fa-list-alt left"></i>{% trans 'Products' %}</a></li>
             <li><a href="#contact"><i class="fa fa-phone left"></i>{% trans 'Contact' %}</a></li>
+            {% if user.is_authenticated %}
+               <li><a href="{% url 'accounts:profile' %}"><i class="fa fa-address-card left"></i>{% trans 'Profile' %}</a></li>
+               <li><a href="{% url 'accounts:logout' %}"><i class="fa fa-sign-out left"></i>{% trans 'Logout' %}</a></li>
+            {% else %}
+               <li><a href="{% url 'accounts:login' %}"><i class="fa fa-sign-in left"></i>{% trans 'Login' %}</a></li>
+            {% endif %}
           </ul>
         </div>
         <ul id="dropdown" class="dropdown-content">
@@ -37,6 +49,13 @@
       </nav>
     </header>
     <main>
+      {% if messages %}
+        <div class="card-panel teal lighten-2">
+          {% for message in messages %}
+            <span>{{message}}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
       {% block main %}{% endblock %}
     </main>
     <footer id="contact" class="page-footer black-gradient">

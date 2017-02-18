@@ -1,5 +1,5 @@
 from django import forms
-from django.core.mail import send_mail
+from core.email import send_email_template
 from django.conf import settings
 
 
@@ -8,9 +8,12 @@ class ContactForm(forms.Form):
   email = forms.EmailField(label='E-mail')
   message = forms.CharField(label='Mensagem', widget=forms.Textarea())
 
-  def send_email(self):
-    name = self.cleaned_data['name']
-    email = self.cleaned_data['email']
-    message = self.cleaned_data['message']
-    message = 'Nome: {0}\nEmail: {1}\nMessage: {2}'.format(name, email, message)
-    send_mail('Contato do spoon E-Commerce', message, settings.DEFAULT_FROM_EMAIL, ['victorhad@gmail.com'])
+  def send_email(self, user):
+    subject = 'Contato do VWE-Commerce: %s' % user
+    template = 'core/contact_email.html'
+    context = {
+      'name': self.cleaned_data['name'],
+      'email': self.cleaned_data['email'],
+      'message': self.cleaned_data['message']
+    }
+    send_email_template(subject, template, context, [settings.CONTACT_EMAIL], context['email'])

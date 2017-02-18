@@ -1,0 +1,100 @@
+{% extends 'accounts/profile.html' %}
+{% load i18n %}
+{% block profile %}
+  {{ block.super }}
+  <a href="{% url 'accounts:edit' %}" class="breadcrumb"><span class="teal-text text-darken-4">{% trans 'Edit Profile' %}</span></a>
+{% endblock %}
+{% block profile_content %}
+  <div class="row">
+    <div class="col s12">
+      <h3>{% trans 'Edit Profile' %}</h3>
+      <form method="post">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col s12">
+            <div class="input-field">
+              {{form.username.label_tag}}
+              {{form.username}}
+              {% for error in form.username.errors %}
+                <span class="red-text text-accent-2">{{error}}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <div class="input-field">
+              {{form.email.label_tag}}
+              {{form.email}}
+              {% for error in form.email.errors %}
+                <span class="red-text text-accent-2">{{error}}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <div class="input-field">
+              {{form.name.label_tag}}
+              {{form.name}}
+              {% for error in form.name.errors %}
+                <span class="red-text text-accent-2">{{error}}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s2">
+            {{form.DDD.label_tag}}
+            {{form.DDD}}
+            {% for error in form.DDD.errors %}
+              <span class="red-text text-accent-2">{{error}}</span>
+            {% endfor %}
+          </div>
+          <div class="input-field col s10">
+            {{form.number.label_tag}}
+            {{form.number}}
+            {% for error in form.number.errors %}
+              <span class="red-text text-accent-2">{{error}}</span>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s5">
+            {{form.country.label_tag}}
+            {{form.country}}
+            {% for error in form.country.errors %}
+              <span class="red-text text-accent-2">{{error}}</span>
+            {% endfor %}
+          </div>
+          <div class="input-field col s5">
+            {{form.city.label_tag}}
+            {{form.city}}
+            {% for error in form.city.errors %}
+              <span class="red-text text-accent-2">{{error}}</span>
+            {% endfor %}
+          </div>
+          <div class="input-field col s2">
+            {{form.state.label_tag}}
+            {{form.state}}
+            {% for error in form.state.errors %}
+              <span class="red-text text-accent-2">{{error}}</span>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <div class="input-field">
+              {{form.complement.label_tag}}
+              {{form.complement}}
+              {% for error in form.complement.errors %}
+                <span class="red-text text-accent-2">{{error}}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn right"><i class="fa fa-send-o left"></i>Enviar</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

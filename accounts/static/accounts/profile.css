@@ -1,0 +1,26 @@
+p {
+  text-align: justify;
+}
+
+.md-20 {
+  font-size: 20px;
+}
+
+a.breadcrumb::before {
+  color: teal;
+  margin: 5px 10px 0 8px;
+  content: '\f101';
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.black-gradient {
+  background: #555;
+  background: -webkit-linear-gradient(to right, black, #555);
+  background: -o-linear-gradient(to right, black, #555);
+  background: -moz-linear-gradient(to right, black, #555);
+  background: linear-gradient(to right, black, #555);
+}

@@ -20,5 +20,5 @@ class ContactTestCase(TestCase):
     data = {'name': 'Pedro Calile', 'message': 'Mensagem de teste', 'email': 'pedro@gmail.com'}
     response = self.client.post(self.url, data)
     self.assertEquals(len(mail.outbox), 1)
-    self.assertEquals(mail.outbox[0].subject, 'Contato do spoon E-Commerce')
+    self.assertEquals(mail.outbox[0].subject, 'Contato do VWE-Commerce: %s' % data['name'])
 

@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'model_mommy',
+    'rest_framework',
     'core',
+    'accounts',
     'catalog',
 ]
 
@@ -143,12 +145,25 @@ ALLOWED_HOSTS = ['*']
 # Servir arquivos estaticos
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
-# E-mail
-EMAIL_HOST = ''
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = 'admin@gmail.com'
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'Nome <victorhad@gmail.com>'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'victorhad@gmail.com'
+EMAIL_HOST_PASSWORD = '****'
+EMAIL_PORT = 587
+CONTACT_EMAIL = 'victorhad@gmail.com'
 
+# AUTH
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'core:home'
+LOGOUT_URL = 'accounts:logout'
+AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = (
+  'django.contrib.auth.backends.ModelBackend',
+  'accounts.backends.ModelBackend',
+)
 
 # Sobrescrever as configurações do settings.py com as do local_settings.py
 try:

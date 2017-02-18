@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'accounts/profile.css' %}">
+{% endblock %}
+{% block main %}
+  <div class="row">
+    <div class="nav-wrapper">
+      <div class="col s12">
+        {% block profile %}
+          <a href="{% url 'core:home' %}" class="breadcrumb teal-text text-darken-4">{% trans 'Home' %}</a>
+          <a href="{% url 'accounts:profile' %}" class="breadcrumb teal-text text-darken-4">{% trans 'My Profile' %}</a>
+        {% endblock %}
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="card-panel">
+        <ul class="collection with-header">
+          <li class="flow-text center-align black-gradient white-text">Bem vindo{% if user.name %},{% endif %} {{user.name}}</li>
+          <li class="divider"></li>
+          {% block menu_options %}
+            <li class="collection-header center-align grey lighten-3"><h4>{% trans 'Account configuration' %}</h4></li>
+            {% if user.is_staff %}
+              <li class="collection-item"><i class="fa fa-id-card left md-20"></i><a href="/admin/">{% trans 'Staff Login' %}</a></li>
+            {% endif %}
+            <li class="collection-item"><i class="fa fa-cog left md-20"></i><a href="{% url 'accounts:edit' %}">{% trans 'Edit Account' %}</a></li>
+            <li class="collection-item"><i class="fa fa-lock left md-20"></i><a href="{% url 'accounts:edit_password' %}">{% trans 'Edit Password' %}</a></li>
+          {% endblock %}
+        </ul>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      {% block profile_content %}
+        <h3>{% trans 'My Profile' %}</h3>
+        <div class="divider"></div>
+        <table class="responsive-table">
+          <tbody>
+            <tr>
+              <th>{% trans 'User' %}:</th>
+              <td>{{user}}</td>
+            </tr>
+            <tr>
+              <th>{% trans 'E-mail' %}:</th>
+              <td>{{user.email}}</td>
+            </tr>
+            <tr>
+              <th>{% trans 'Address' %}:</th>
+              <td>{{user.city}}, {{user.state}}</td>
+            </tr>
+            <tr>
+              <th>{% trans 'Phone' %}:</th>
+              <td>({{user.DDD}}) {{user.number}}</td>
+            </tr>
+          </tbody>
+        </table>
+        {% endblock %}
+    </div>
+  </div>
+{% endblock %}
