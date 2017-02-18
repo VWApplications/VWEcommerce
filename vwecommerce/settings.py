@@ -82,7 +82,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'vwecommerce.wsgi.application'
 
-
 # Banco de Dados
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 # ENGINE: é o banco de dados que irá utilizar
