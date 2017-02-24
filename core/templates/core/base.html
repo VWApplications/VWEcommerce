@@ -23,6 +23,7 @@
               <i class="fa fa-list-alt left"></i>{% trans 'Category' %}<i class="fa fa-angle-down right"></i>
             </a></li>
             <li><a href="#contact"><i class="fa fa-phone left"></i>{% trans 'Contact' %}</a></li>
+            <li><a href="{% url 'checkout:cart' %}"><i class="fa fa-shopping-cart left"></i>{% trans 'Cart' %}</a></li>
             {% if user.is_authenticated %}
                <li><a href="{% url 'accounts:profile' %}"><i class="fa fa-address-card left"></i>{% trans 'Profile' %}</a></li>
                <li><a href="{% url 'accounts:logout' %}"><i class="fa fa-sign-in left"></i>{% trans 'Logout' %}</a></li>
@@ -48,19 +49,15 @@
         </ul>
       </nav>
     </header>
-    <main>
-      {% if messages %}
-        <div class="card-panel teal lighten-2">
-          {% for message in messages %}
-            <span>{{message}}</span>
-          {% endfor %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="card-panel {{message.tags}}">
+          <span>{{message}}</span>
         </div>
-      {% endif %}
-      {% block main %}{% endblock %}
-    </main>
-    <footer id="contact" class="page-footer black-gradient">
-      {% include 'core/footer.html' %}
-    </footer>
+      {% endfor %}
+    {% endif %}
+    {% block main %}{% endblock %}
+    {% block footer %}{% endblock %}
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <script src="{% static 'core/js/base.js' %}"></script>

@@ -6,12 +6,14 @@ class CategoryAdmin(admin.ModelAdmin):
   list_display = ['name', 'created_at', 'updated_at']
   search_fields = ['name', 'slug']
   list_filter = ['created_at', 'updated_at']
+  prepopulated_fields = {'slug': ('name',)}
 
 
 class ProductAdmin(admin.ModelAdmin):
   list_display = ['name', 'category', 'created_at', 'updated_at']
   search_fields = ['name', 'category__name']
   list_filter = ['created_at', 'updated_at']
+  prepopulated_fields = {'slug': ('name',)}
 
 
 admin.site.register(Category, CategoryAdmin)

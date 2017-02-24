@@ -1,69 +1,71 @@
 {% load i18n %}
-<div class="container" id="contact">
-  <div class="row">
-    <div class="col l4 s12">
-      <h2 class="white-text">{% trans 'Contact' %}</h2>
-      <p class="grey-text text-lighten-4"><b>{% trans 'Address' %}</b>: Brasilia, DF</p>
-      <p class="grey-text text-lighten-4"><b>{% trans 'Email' %}</b>: victorhad@gmail.com</p>
-      <p class="grey-text text-lighten-4"><b>{% trans 'Phone' %}</b>: (61) 999824945</p>
-    </div><br />
-    <div class="col l8 s12">
-      <form method="post" action="#contact">
-        {% csrf_token %}
-        <div class="row">
-          <div class="col s12">
-            <div class="row">
-              <h4 class="grey-text text-lighten-4">{% trans 'Contact me' %}</h4>
-              <div class="input-field col s6">
-                <span class="fa fa-user-circle-o md-light prefix"></span>
-                <input id="name" type="text" class="validate" name="name">
-                <label for="name">{% trans 'First Name' %}</label>
-                {% for error in form.name.errors %}
-                  <span class="red-text text-accent-2">{{error}}</span>
-                {% endfor %}
-              </div>
-              <div class="input-field col s6">
-                <span class="fa fa-envelope-o md-light prefix"></span>
-                <input id="email" type="email" class="validate" name="email">
-                <label for="email">{% trans 'Email' %}</label>
-                {% for error in form.email.errors %}
-                  <span class="red-text text-accent-2">{{error}}</span>
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <span class="fa fa-commenting md-light prefix"></span>
-                <textarea id="message" class="materialize-textarea" length="300" name="message"></textarea>
-                <label for="message">{% trans 'Message' %}</label>
-                {% for error in form.message.errors %}
-                  <span class="red-text text-accent-2">{{error}}</span>
-                {% endfor %}
+<footer id="contact" class="page-footer black-gradient">
+  <div class="container" id="contact">
+    <div class="row">
+      <div class="col l4 s12">
+        <h2 class="white-text">{% trans 'Contact' %}</h2>
+        <p class="grey-text text-lighten-4"><b>{% trans 'Address' %}</b>: Brasilia, DF</p>
+        <p class="grey-text text-lighten-4"><b>{% trans 'Email' %}</b>: victorhad@gmail.com</p>
+        <p class="grey-text text-lighten-4"><b>{% trans 'Phone' %}</b>: (61) 999824945</p>
+      </div><br />
+      <div class="col l8 s12">
+        <form method="post">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col s12">
+              <div class="row">
+                <h4 class="grey-text text-lighten-4">{% trans 'Contact me' %}</h4>
+                <div class="input-field col s6">
+                  <span class="fa fa-user-circle-o md-light prefix"></span>
+                  <input id="name" type="text" class="validate" name="name">
+                  <label for="name">{% trans 'First Name' %}</label>
+                  {% for error in form.name.errors %}
+                    <span class="red-text text-accent-2">{{error}}</span>
+                  {% endfor %}
+                </div>
+                <div class="input-field col s6">
+                  <span class="fa fa-envelope-o md-light prefix"></span>
+                  <input id="email" type="email" class="validate" name="email">
+                  <label for="email">{% trans 'Email' %}</label>
+                  {% for error in form.email.errors %}
+                    <span class="red-text text-accent-2">{{error}}</span>
+                  {% endfor %}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <button type="submit" class="waves-effect waves-light btn right"><i class="fa fa-send-o left"></i>Enviar</button>
-      </form>
+          <div class="row">
+            <div class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <span class="fa fa-commenting md-light prefix"></span>
+                  <textarea id="message" class="materialize-textarea" length="300" name="message"></textarea>
+                  <label for="message">{% trans 'Message' %}</label>
+                  {% for error in form.message.errors %}
+                    <span class="red-text text-accent-2">{{error}}</span>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="waves-effect waves-light btn right"><i class="fa fa-send-o left"></i>Enviar</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
-<div class="footer-copyright">
-  <div class="container">
-    <span class="copyright">{% trans 'Made by' %} <a href="http://github.com/VictorArnaud" target="_blank">Victor Arnaud</a></span>
+  <div class="footer-copyright">
+    <div class="container">
+      <span class="copyright">{% trans 'Made by' %} <a href="http://github.com/VictorArnaud" target="_blank">Victor Arnaud</a></span>
+    </div>
   </div>
-</div>
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large waves-effect waves-teal">
-    <i class="large fa fa-link"></i>
-  </a>
-  <ul>
-    <li><a class="btn-floating tooltipped" data-tooltip="Youtube"><i class="fa fa-youtube"></i></a></li>
-    <li><a class="btn-floating tooltipped" data-tooltip="Facebook"><i class="fa fa-facebook-square"></i></a></li>
-    <li><a class="btn-floating tooltipped" data-tooltip="Instagran"><i class="fa fa-instagram"></i></a></li>
-  </ul>
-</div>
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-teal">
+      <i class="large fa fa-link"></i>
+    </a>
+    <ul>
+      <li><a class="btn-floating tooltipped" data-tooltip="Youtube"><i class="fa fa-youtube"></i></a></li>
+      <li><a class="btn-floating tooltipped" data-tooltip="Facebook"><i class="fa fa-facebook-square"></i></a></li>
+      <li><a class="btn-floating tooltipped" data-tooltip="Instagran"><i class="fa fa-instagram"></i></a></li>
+    </ul>
+  </div>
+</footer>

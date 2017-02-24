@@ -10,7 +10,8 @@
           <p><a class="blue-text text-darken-2 right list-link tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver produto" href="{{product.get_absolute_url}}">
             <i class="fa fa-eye md-30"></i>
           </a></p>
-          <p><a class="blue-text text-darken-2 left list-link tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar ao carrinho" href="#">
+          <p><a class="blue-text text-darken-2 left list-link tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar ao
+          carrinho" href="{% url 'checkout:create-cartitem' product.slug %}">
             <i class="fa fa-cart-arrow-down md-30"></i>
           </a></p>
         </div>

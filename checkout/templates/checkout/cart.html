@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}Carrinho de Compras{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'checkout/checkout.css' %}" />{% endblock %}
+{% block main %}
+<div class="container">
+  <div class="row">
+    <div class="card-panel">
+      <h2 class="header">Carrinho de Compras</h2>
+      <div class="divider"></div><br />
+      <div class="row">
+        <div class="col s12">
+          <form action="" method="post">
+            {% csrf_token %}
+            {{ formset.management_form }}
+            <table class="highlight responsive-table centered">
+              <thead>
+                <tr>
+                  <th data-field="id">ID</th>
+                  <th data-field="product">Produto</th>
+                  <th data-field="price">Preço</th>
+                  <th data-field="quantity">Quantidade</th>
+                  <th data-field="delete"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for form in formset %}
+                <tr>
+                  <td>{{form.instance.product.pk}}</td>
+                  <td>{{form.instance.product}}</td>
+                  <td>R$ {{form.instance.price|floatformat:"2"}}</td>
+                  <td>{% render_field form.quantity class="form-quantity" %}</td>
+                  <td><button value="on" type="submit" name="{{form.DELETE.html_name}}" class="btn">Remover</button>{{form.id}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <a class="btn left" href="{% url 'catalog:product_list' %}">Continuar Compras</a>
+            <button type="submit" class="btn left">Atualizar Carrinho</button>
+            <a class="btn right" href="#">Finalizar Compras</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

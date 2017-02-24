@@ -2,6 +2,7 @@
 {% load static %}
 {% block active-home %}active{% endblock %}
 {% block main %}
+<main>
   <div class="parallax-container">
     <div class="parallax"><img src="{% static 'core/img/parallax.jpg' %}"></div>
     <div class="container">
@@ -44,4 +45,7 @@
         </div>
       </div>
     </div>
+  </div>
+</main>
+{% include 'core/footer.html' %}
 {% endblock %}

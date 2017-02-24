@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'model_mommy',
     'rest_framework',
+    'widget_tweaks',
     'core',
     'accounts',
     'catalog',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -141,7 +143,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Permitir todos os dominios que vão ter acesso a essa aplicação
 ALLOWED_HOSTS = ['*']
 
-
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'Nome <victorhad@gmail.com>'
@@ -161,6 +162,16 @@ AUTHENTICATION_BACKENDS = (
   'django.contrib.auth.backends.ModelBackend',
   'accounts.backends.ModelBackend',
 )
+
+# Messages
+from django.contrib.messages import constants as messages_constants
+MESSAGE_TAGS = {
+  messages_constants.DEBUG: 'purple lighten-2',
+  messages_constants.INFO: 'blue lighten-2',
+  messages_constants.SUCCESS: 'teal lighten-2',
+  messages_constants.WARNING: 'lime lighten-2',
+  messages_constants.ERROR: 'red lighten-2',
+}
 
 # Sobrescrever as configurações do settings.py com as do local_settings.py
 try:
