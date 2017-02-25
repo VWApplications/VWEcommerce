@@ -22,7 +22,6 @@
             <li class="{% block active-category %}{% endblock %}"><a class="dropdown-button" href="#!" data-activates="dropdown">
               <i class="fa fa-list-alt left"></i>{% trans 'Category' %}<i class="fa fa-angle-down right"></i>
             </a></li>
-            <li><a href="#contact"><i class="fa fa-phone left"></i>{% trans 'Contact' %}</a></li>
             <li><a href="{% url 'checkout:cart' %}"><i class="fa fa-shopping-cart left"></i>{% trans 'Cart' %}</a></li>
             {% if user.is_authenticated %}
                <li><a href="{% url 'accounts:profile' %}"><i class="fa fa-address-card left"></i>{% trans 'Profile' %}</a></li>
