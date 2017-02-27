@@ -89,5 +89,6 @@ ENV/
 .ropeproject
 
 # Production
-vwecommerce/local_settings.py
-media
+local_settings.py
+media/
+staticfiles/

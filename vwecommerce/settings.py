@@ -27,9 +27,6 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'SECRET_KEY_DEFAULT')
 # Modo de debug para ambiente de desenvolvimento, deve ser False quando colocado em produção
 DEBUG = False
 
-# Dominios permitidos para a aplicação
-ALLOWED_HOSTS = []
-
 # Instalar aplicações
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -130,16 +127,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Database
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
-# Configurações de segurança do heroku
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Permitir todos os dominios que vão ter acesso a essa aplicação
 ALLOWED_HOSTS = ['*']
